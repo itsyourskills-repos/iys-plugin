@@ -246,9 +246,7 @@ class IysFunctionalAreasPlugin extends IysSearchPlugin {
     this.createSearchBox();
     this.setupCreateSearchTriggers();
     this.createPlayground();
-    this.createFunctionalAreaBox();
-    this.functionalAreaAPI();
-    this.createRateSelectedSkills(this.options.skillPlayground, []);
+    // this.functionalAreaAPI();
     // this.createSkillSelectBox();
   }
   createPlayground() {
@@ -259,7 +257,7 @@ class IysFunctionalAreasPlugin extends IysSearchPlugin {
   }
   skillClick(skillListId) {
     clearsessionStorage();
-    console.log(this.ratedSelectedSkills);
+    // console.log(this.ratedSelectedSkills);
     this.createSkillSelectBox(this.searchResultsList[skillListId]);
     this.createSkillSearchList([]);
   }
@@ -326,6 +324,7 @@ class IysFunctionalAreasPlugin extends IysSearchPlugin {
       if (isFuncSkill) {
         clearsessionStorage();
       }
+      console.log(skillDetail);
       addTosessionStorage(skillDetail);
       this.createSkillSelectBox(skillDetail);
     });
@@ -544,18 +543,18 @@ class IysFunctionalAreasPlugin extends IysSearchPlugin {
   createRateSelectedSKill() {
     // create unordered list element
     const ul = document.createElement("ul");
-    
+
     // add classes to the unordered list element
     ul.classList.add("list-group", "list-group-flush");
-    
-    console.log(this.ratedSelectedSkills)
+
+    console.log(this.ratedSelectedSkills);
     // loop through the array of list item texts and create a list item for each
     for (let i = 0; i < this.ratedSelectedSkills.length; i++) {
       const li = document.createElement("li");
       li.textContent = this.ratedSelectedSkills[i].skillDetail.name;
       const spanDiv = document.createElement("span");
-      this.createRatingStars(spanDiv,4)
-      li.appendChild(spanDiv)
+      this.createRatingStars(spanDiv, 4);
+      li.appendChild(spanDiv);
 
       ul.appendChild(li);
     }
@@ -643,7 +642,7 @@ class IysFunctionalAreasPlugin extends IysSearchPlugin {
 
     if (skillDetail?.skills?.length > 0) {
       skillDetail.skills.forEach((skill) => {
-        clearsessionStorage();
+        // clearsessionStorage();
         this.treeSkillAPI(cardBodyDiv, skill._id);
         // this.createSkillPath(cardBodyDiv, getListFromsessionStorage());
       });
